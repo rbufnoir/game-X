@@ -16,7 +16,9 @@ else {
             if (empty($url[1]))
                 $gameController->displayGames();
             else if($url[1] == 'add')
-                echo 'add';
+                $gameController->newGameForm();
+            else if($url[1] == 'gvalid')
+                $gameController->newGameValidation();
             else if($url[1] == 'edit')
                 echo 'edit';
             else if($url[1] == 'delete')

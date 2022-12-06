@@ -22,4 +22,18 @@ class GameManager extends Manager {
             $this->addGame($g);
         }
     }
+
+    public function newGameDB($title, $nbPlayers) {
+        $req = "INSERT INTO games (title, nb_players) VALUES (:title, :nbPlayers);";
+
+        $statement = $this->getDB()->prepare($req);
+        $statement->bindValue(':title', $title, PDO::PARAM_STR);
+        $statement->bindValue(':nbPlayers', $nbPlayers, PDO::PARAM_STR);
+        $result = $statement->execute();
+
+        $statement->closeCursor();
+
+        if ($result)
+            $this->loadGames();
+    }
 }
