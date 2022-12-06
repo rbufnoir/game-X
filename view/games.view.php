@@ -1,14 +1,5 @@
 <?php 
-
-require_once 'GameManager.php';
-
-$gameManager = new GameManager();
-
-$gameManager->loadGames();
-$games = $gameManager->getGames();
-
 ob_start();
-
 ?>
 
 <p>Games - Notre sélection</p>
@@ -34,7 +25,7 @@ ob_start();
     </tbody>
 </table>
 
-<a href="" class="btn btn-success w-25 d-block m-auto">Ajouter un jeu</a>
+<a href="<?= URL ?>games/add" class="btn btn-success w-25 d-block m-auto">Ajouter un jeu</a>
 
 <?php
     $content = ob_get_clean();
