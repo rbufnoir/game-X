@@ -25,6 +25,8 @@ else {
                 $gameController->editGameValidation();
             else if($url[1] == 'delete')
                 $gameController->deleteGame($url[2]);
+            else if(is_numeric($url[1]))
+                $gameController->displayGame($url[1]);
         break;
         case 'redirect' : $gameController->redirectGame($_POST['search-bar']);
         break;

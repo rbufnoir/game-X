@@ -42,12 +42,18 @@ class GameController {
         header('Location:'.URL.'games');
     }
 
+    public function displayGame($id) {
+        $game = $this->gameManager->getGameById($id);
+        
+        require_once 'view/game.view.php';
+    }
+    
     public function redirectGame($name) {
-        $games = $this->gameManager->getGames();
-
+        $games = $this->gameManager->getGames($name);
+        
         foreach($games as $game) {
             if ($game->getTitle() == $name) {
-                require_once 'view/game.view.php';
+                header('Location:'.URL.'games/'. $game->getId());
                 return ;
             }
         }
