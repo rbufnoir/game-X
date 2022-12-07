@@ -37,9 +37,21 @@ class GameController {
         }
     }
 
-    public  function deleteGame($id) {
+    public function deleteGame($id) {
         $this->gameManager->deleteGame($id);
         header('Location:'.URL.'games');
+    }
+
+    public function redirectGame($name) {
+        $games = $this->gameManager->getGames();
+
+        foreach($games as $game) {
+            if ($game->getTitle() == $name) {
+                require_once 'view/game.view.php';
+                return ;
+            }
+        }
+        require_once 'view/games.view.php';
     }
 }
 

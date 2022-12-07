@@ -24,7 +24,7 @@ class GameManager extends Manager {
     }
 
     public function getGameByName($s) {
-        $myGames = $this->returnQuery("SELECT title FROM games WHERE title LIKE '%".$s."%';");
+        $myGames = $this->returnQuery("SELECT * FROM games WHERE title LIKE '%".$s."%';");
 
         return $myGames;
     }

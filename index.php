@@ -26,5 +26,7 @@ else {
             else if($url[1] == 'delete')
                 $gameController->deleteGame($url[2]);
         break;
+        case 'redirect' : $gameController->redirectGame($_POST['search-bar']);
+        break;
     }
 }
