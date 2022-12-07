@@ -4,7 +4,7 @@ abstract class Manager {
     private static $pdo;
     
     private static function setDb() {
-        self::$pdo = new PDO("mysql:host=localhost;dbname=games;charset=utf8", "root", "");
+        self::$pdo = new PDO("mysql:host=localhost;dbname=game_x;charset=utf8", "root", "");
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 

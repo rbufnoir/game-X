@@ -20,9 +20,9 @@ else {
             else if($url[1] == 'gvalid')
                 $gameController->newGameValidation();
             else if($url[1] == 'edit')
-                echo 'edit';
+                echo $url[2];
             else if($url[1] == 'delete')
-                echo 'delete';
+                echo $url[2];
         break;
     }
 }

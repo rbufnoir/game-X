@@ -18,8 +18,8 @@ ob_start();
         <tr>
             <td><?= $game->getTitle(); ?></td>
             <td><?= $game->getNbPlayers(); ?></td>
-            <td><a href=""><i class="fas fa-edit"></a></td>
-            <td><a href=""><i class="fas fa-trash"></a></td>
+            <td><a href="<?= URL ?>games/edit/<?= $game->getId(); ?>"><i class="fas fa-edit"></a></td>
+            <td><a href="<?= URL ?>games/delete/<?= $game->getId(); ?>"><i class="fas fa-trash"></a></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
