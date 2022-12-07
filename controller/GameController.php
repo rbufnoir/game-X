@@ -24,5 +24,22 @@ class GameController {
             header('Location:'.URL.'games');
         }
     }
+
+    public function editGameForm($id) {
+        $game = $this->gameManager->getGameById($id);
+        require_once 'view/edit.game.view.php';
+    }
+
+    public function editGameValidation() {
+        if ($_POST['id-game'] != null && $_POST['title'] != null && $_POST['nbPlayers'] != null) {
+            $this->gameManager->editGameDB($_POST['id-game'], $_POST['title'], $_POST['nbPlayers']);
+            header('Location:'.URL.'games');
+        }
+    }
+
+    public  function deleteGame($id) {
+        $this->gameManager->deleteGame($id);
+        header('Location:'.URL.'games');
+    }
 }
 

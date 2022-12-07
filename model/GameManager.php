@@ -28,7 +28,7 @@ class GameManager extends Manager {
 
         $statement = $this->getDB()->prepare($req);
         $statement->bindValue(':title', $title, PDO::PARAM_STR);
-        $statement->bindValue(':nbPlayers', $nbPlayers, PDO::PARAM_STR);
+        $statement->bindValue(':nbPlayers', $nbPlayers, PDO::PARAM_INT);
         $result = $statement->execute();
 
         $statement->closeCursor();
@@ -37,10 +37,39 @@ class GameManager extends Manager {
             $this->loadGames();
     }
 
+    public function editGameDB($id, $title, $nbPlayers) {
+        $req = "UPDATE games SET title = :title, nb_players = :nbPlayers WHERE id = :id";
+
+        $statement = $this->getDB()->prepare($req);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->bindValue(':title', $title, PDO::PARAM_STR);
+        $statement->bindValue(':nbPlayers', $nbPlayers, PDO::PARAM_INT);
+        $result = $statement->execute();
+        $statement->closeCursor();
+        
+        if ($result)
+            $this->loadGames();
+    }
+
     public function getGameById($id) {
         foreach ($this->games as $game) {
-            if ($game->getId() === $id)
+            if ($game->getId() == $id)
                 return $game;
+        }
+    }
+
+    public function deleteGame($id) {
+        $req = "DELETE FROM games WHERE id = :id";
+
+        $statement = $this->getDB()->prepare($req);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        
+        $result = $statement->execute();
+        $statement->closeCursor();
+
+        if ($result) {
+            $game = $this->getGameById($id);
+            unset($game);
         }
     }
 }
