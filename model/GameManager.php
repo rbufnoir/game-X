@@ -23,6 +23,12 @@ class GameManager extends Manager {
         }
     }
 
+    public function getGameByName($s) {
+        $myGames = $this->returnQuery("SELECT title FROM games WHERE title LIKE '%".$s."%';");
+
+        return $myGames;
+    }
+
     public function newGameDB($title, $nbPlayers) {
         $req = "INSERT INTO games (title, nb_players) VALUES (:title, :nbPlayers);";
 
