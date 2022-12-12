@@ -13,7 +13,7 @@ function getSearchTerms() {
         }
     }
 
-    xmlhttp.open("POST", "http://localhost/game-X/search.php", true);
+    xmlhttp.open("POST", "http://localhost/game-X/asset/search.php", true);
     xmlhttp.send();
 }
 
