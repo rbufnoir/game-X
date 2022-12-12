@@ -1,6 +1,6 @@
 <?php
 
-require_once 'controller/SearchGamesController.php';
+require_once '../controller/SearchGamesController.php';
 
 $searchGamesController = new SearchGamesController();
 $games = $searchGamesController->getAllGames();
