@@ -2,8 +2,10 @@
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']));
 
 require_once 'controller/GameController.php';
+require_once 'controller/UserController.php';
 
 $gameController = new GameController();
+$userController = new UserController();
 
 if (empty($_GET['page']))
     require_once './view/home.view.php';
@@ -12,7 +14,7 @@ else {
     switch($url[0]) {
         case 'index' : require_once './view/home.view.php';
         break;
-        case 'games' : 
+        case 'games' :
             if (empty($url[1]))
                 $gameController->displayGames();
             else if($url[1] == 'add')
@@ -33,6 +35,18 @@ else {
                 $gameController->redirectGame($_POST['search-bar']);
             else
                 $gameController->redirectGame(explode('/', $_GET['page'])[1]);
+        break;
+        case 'login' : 
+            require_once 'view/login.user.view.php';
+        break;
+        case 'register' : 
+            $userController->newUserForm();
+        break;
+        case 'user' :
+            if ($url[1] == "registervalid")
+                $userController->newUserValidation();
+            if ($url[1] == "checkUser") 
+                $userController;
         break;
     }
 }
