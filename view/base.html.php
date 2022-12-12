@@ -35,11 +35,21 @@
                 <div class="dropdown-menu dropdown-menu-left">
                     <a class="dropdown-item" href="<?= URL ?>login">Login</a>
                     <a class="dropdown-item" href="<?= URL ?>register">Register</a>
+                    <?php
+                      if(isset($_SESSION['username'])) {
+                        echo "<div class=\"dropdown-divider\"></div>";
+                        echo "<a class='dropdown-item' href='".URL."disconnect'>Disconnect</a>";
+                      }
+                    ?>
                 </div>
             </div>
         </div>
       </div>
     </nav>
+    <?php
+      if(isset($_SESSION['username']))
+        echo "<p>Bonjour ".$_SESSION['username']."</p>";
+    ?>
 
     <div class="container">
       <h1 class="my-4 text-center bg-secondary shadow p-2">

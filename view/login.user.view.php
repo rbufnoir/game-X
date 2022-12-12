@@ -2,7 +2,7 @@
     ob_start();
 ?>
 
-<form method="POST" action="<?= URL ?>user/checkuser">
+<form method="POST" action="<?= URL ?>user/checkuserlogin">
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" name="username" id="username">
