@@ -20,7 +20,7 @@ class GameController {
 
     public function newGameValidation() {
         if ($_POST['title'] != null && $_POST['nbPlayers'] != null) {
-            $this->gameManager->newGameDB($_POST['title'], $_POST['nbPlayers']);
+            $this->gameManager->newGameDB(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['nbPlayers']));
             header('Location:'.URL.'games');
         }
     }
@@ -32,7 +32,7 @@ class GameController {
 
     public function editGameValidation() {
         if ($_POST['id-game'] != null && $_POST['title'] != null && $_POST['nbPlayers'] != null) {
-            $this->gameManager->editGameDB($_POST['id-game'], $_POST['title'], $_POST['nbPlayers']);
+            $this->gameManager->editGameDB($_POST['id-game'], htmlspecialchars($_POST['title']), htmlspecialchars($_POST['nbPlayers']));
             header('Location:'.URL.'games');
         }
     }
