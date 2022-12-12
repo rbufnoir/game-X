@@ -60,4 +60,3 @@ class GameController {
         require_once 'view/games.view.php';
     }
 }
-

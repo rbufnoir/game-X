@@ -28,7 +28,11 @@ else {
             else if(is_numeric($url[1]))
                 $gameController->displayGame($url[1]);
         break;
-        case 'redirect' : $gameController->redirectGame($_POST['search-bar']);
+        case 'redirect' : 
+            if (empty($url[1]))
+                $gameController->redirectGame($_POST['search-bar']);
+            else
+                $gameController->redirectGame(explode('/', $_GET['page'])[1]);
         break;
     }
 }

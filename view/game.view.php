@@ -11,7 +11,7 @@ ob_start();
         </tr>
     </thead>
     <tbody>    
-        <tr>
+        <tr class="game">
             <td><?= $game->getTitle(); ?></td>
             <td><?= $game->getNbPlayers(); ?></td>
             <td><a href="<?= URL ?>games/edit/<?= $game->getId(); ?>"><i class="fas fa-edit"></a></td>
